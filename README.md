@@ -4,7 +4,7 @@
 
 The RSV format is a simple binary alternative to CSV that eliminates the problem of delimiters appearing as values and thus needing special handling of the value.  The format is binary, and so cannot be handled in any software that is RSV-unaware; it is intended that users not manually create or edit an RSV file.  This specification differs from RFC 4180 in that it doesn't describe how RSV might be used, e.g. trying to define a header.
 
-_(This specification differs from the original in that null values have been removed to remain as close to the spirit of CSV as possible.)_
+_(This specification differs from [the original](https://github.com/Stenway/RSV-Specification) in that this spec does not define null values.)_
 
 ## Definition of the RSV format
 
