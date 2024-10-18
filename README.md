@@ -51,10 +51,10 @@ EOR = %xFF
 
 EOV = %xFE
 
-UTF-8_DATA = as per section 4 of RFC 3629 [^2]
+UTF-8_DATA = as per section 4 of RFC 3629
 ```
 
-The EOR and EOV byte-values were chosen because by definition they cannot appear in valid UTF-8 data.
+The EOR and EOV byte-values were chosen because by definition they cannot appear in valid UTF-8 data [^2].
 
 ## Normative references
 
