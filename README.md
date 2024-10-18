@@ -2,9 +2,7 @@
 
 ## Introduction
 
-The RSV format is a simple binary alternative to CSV that eliminates the problem of delimiters appearing as values and thus needing special handling of the value.  The format is binary, and so cannot be handled in an RSV-unaware text editor.
-
-This format doesn't interfere with the values, and relies on software to handle the rules of the format so that people can focus on the values.
+The RSV format is a simple binary alternative to CSV that eliminates the problem of delimiters appearing as values and thus needing special handling of the value.  The format is binary, and so cannot be handled in any software that is RSV-unaware.  It is intended that people not have to and not try to hand-code this format, to aleviate the class of operator errors that CSV suffers from.  This specification differs from RFC 4180 in that it doesn't describe how RSV might be used, e.g. trying to define a header.
 
 _(This specification differs from the original in that null values have been removed to remain as close to the spirit of CSV as possible.)_
 
@@ -37,24 +35,25 @@ _(This specification differs from the original in that null values have been rem
  3. An RSV file is 0 or more rows, allowing for an empty file.  For example, one row of three values, followed by an empty row, followed by a row of two values:
 
     ```
-    aaa EOV EOV ccc EOV EOR zzz EOV yyy EOV EOR
+    aaa EOV EOV ccc EOV EOR EOR zzz EOV yyy EOV EOR
     ```
 
 The ABNF grammar [^1] appears as follows:
 
+```
 file = *row
 
 row = *value EOR
 
-value = *([UTF-8_DATA] EOV)
+value = *( [UTF-8_DATA] EOV )
 
 EOR = %xFF
 
 EOV = %xFE
 
 UTF-8_DATA = as per section 4 of RFC 3629 [^2]
+```
+
+The EOR and EOV byte-values were chosen because by definition they cannot appear in valid UTF-8 data.
 
 ## Normative references
-
-[^1]: Crocker, D. and P. Overell, "Augmented BNF for Syntax Specifications: ABNF", RFC 2234, November 1997.
-[^2]: Yergeau, F., "UTF-8, a transformation format of ISO 10646", RFC 3629, November 2003
