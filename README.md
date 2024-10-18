@@ -99,13 +99,13 @@ from io import BytesIO
 
 
 def encode(rows: Rows) -> bytes:
-    s = BytesIO()
+    b = BytesIO()
     for row in rows:
         for value in row:
-            s.write(value.encode())
-            s.write(EOV)
-        s.write(EOR)
-    return s.getvalue()
+            b.write(value.encode())
+            b.write(EOV)
+        b.write(EOR)
+    return b.getvalue()
 
 
 assert encode(rsv_rows) == rsv_bytes
