@@ -55,11 +55,14 @@ To decode bytes to rows of strings:
 EOV = b"\xEF"
 EOR = b"\xFF"
 
+Row = list[str]
+Rows = list[Row]
 
-def decode(rsv: bytes) -> list[list[str]]:
-    rows: list[list[str]] = []
+
+def decode(rsv: bytes) -> Rows:
+    rows: Rows = []
     for _row in rsv.split(EOR)[:-1]:
-        row: list[str] = []
+        row: Row = []
         for _value in _row.split(EOV)[:-1]:
             row.append(_value.decode())
         rows.append(row)
@@ -95,7 +98,7 @@ To encode rows of strings to bytes:
 from io import BytesIO
 
 
-def encode(rows: list[list[str]]) -> bytes:
+def encode(rows: Rows) -> bytes:
     s = BytesIO()
     for row in rows:
         for value in row:
