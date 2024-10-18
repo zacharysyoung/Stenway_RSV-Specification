@@ -57,3 +57,6 @@ UTF-8_DATA = as per section 4 of RFC 3629 [^2]
 The EOR and EOV byte-values were chosen because by definition they cannot appear in valid UTF-8 data.
 
 ## Normative references
+
+[^1]: Crocker, D. and P. Overell, "Augmented BNF for Syntax Specifications: ABNF", RFC 2234, November 1997.
+[^2]: Yergeau, F., "UTF-8, a transformation format of ISO 10646", RFC 3629, November 2003
