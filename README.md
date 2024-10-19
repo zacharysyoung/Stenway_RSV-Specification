@@ -69,13 +69,13 @@ def decode(rsv: bytes) -> Rows:
     return rows
 
 
-rsv_bytes = (b""
+RSV_BYTES    = (b""
     + b"\x61\x61\x61" + EOV + EOV + b"\x63\x63\x63" + EOV + EOR
     + EOR
     + b"\x7a\x7a\x7a" + EOV + b"\x79\x79\x79" + EOV + EOR
 )
 
-rsv_rows = decode(rsv_bytes)
+rsv_rows = decode(RSV_BYTES)
 
 print(rsv_rows)
 ```
@@ -106,7 +106,7 @@ def encode(rows: Rows) -> bytes:
     return b.getvalue()
 
 
-assert encode(rsv_rows) == rsv_bytes
+assert encode(rsv_rows) == RSV_BYTES
 assert decode(encode(rsv_rows)) == rsv_rows
 ```
 
