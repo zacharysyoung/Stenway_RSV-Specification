@@ -69,7 +69,7 @@ def decode(rsv: bytes) -> Rows:
     return rows
 
 
-RSV_BYTES    = (b""
+RSV_BYTES = (b""
     + b"\x61\x61\x61" + EOV + EOV + b"\x63\x63\x63" + EOV + EOR
     + EOR
     + b"\x7a\x7a\x7a" + EOV + b"\x79\x79\x79" + EOV + EOR
