@@ -11,7 +11,7 @@ This specification differs from RFC 4180 [^1] in that it doesn't describe how RS
 
 ## Definition of the RSV format
 
- 1. A value is 0 or more sequences of valid UTF-8 encode bytes, terminated by the end-of-value byte 0xFE (EOV).  For example (spaces included for clarity):
+ 1. A value is zero or more sequences of valid UTF-8 encode bytes, terminated by the end-of-value byte 0xFE (EOV).  For example (spaces included for clarity):
 
     `aaa EOV`
 
@@ -19,7 +19,7 @@ This specification differs from RFC 4180 [^1] in that it doesn't describe how RS
 
     `EOV`
 
- 2. A row is 0 or more values, terminated by the end-of-row byte 0xFF (EOR).  For example:
+ 2. A row is zero or more values, terminated by the end-of-row byte 0xFF (EOR).  For example:
 
     `aaa EOV EOV ccc EOV EOR`
 
@@ -27,7 +27,7 @@ This specification differs from RFC 4180 [^1] in that it doesn't describe how RS
 
     `EOR`
 
- 3. A file is 0 or more rows, allowing for an empty file.  For example, one row of three values, followed by an empty row, followed by a row of two values:
+ 3. A file is zero or more rows, allowing for an empty file.  For example, one row of three values, followed by an empty row, followed by a row of two values:
 
     `aaa EOV EOV ccc EOV EOR EOR zzz EOV yyy EOV EOR`
 
