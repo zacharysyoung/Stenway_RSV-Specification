@@ -69,15 +69,10 @@ def decode(rsv: bytes) -> Rows:
     return rows
 
 
-rsv_bytes = (
-    b"\x41\x6c\x6c\x20\x64\x6f\x6e\x65\x21\x20\xe2\x9c\xa8\x20\xf0\x9f\x8d\xb0\x20\xe2\x9c\xa8"
-    + EOV
-    + b"\x48\x6f\x6f\x72\x61\x79\x21"
-    + EOV
+rsv_bytes = (b""
+    + b"\x61\x61\x61" + EOV + EOV + b"\x63\x63\x63" + EOV + EOR
     + EOR
-    + b"\x41\x6c\x6c\x20\x64\x6f\x6e\x65\x2e"
-    + EOV
-    + EOR
+    + b"\x7a\x7a\x7a" + EOV + b"\x79\x79\x79" + EOV + EOR
 )
 
 rsv_rows = decode(rsv_bytes)
@@ -85,10 +80,13 @@ rsv_rows = decode(rsv_bytes)
 print(rsv_rows)
 ```
 
+That prints:
+
 ```python
 [
-    ['All done! ✨ 🍰 ✨', 'Hooray!'],
-    ['All done.'],
+    ['aaa', '', 'ccc'],
+    [],
+    ['zzz', 'yyy'],
 ]
 ```
 
