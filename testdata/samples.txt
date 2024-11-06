@@ -1,5 +1,4 @@
-The same three rows of data as CSV and JSONTypedTable (JTT).
-The JTT has an extra header row that defines the types.
+The same header and three rows of data as CSV and JSONTypedTable (JTT).
 -- data.csv --
 Name,Age,Salary,Retiring,Notes
 Foo,1,2.1,false,
@@ -8,7 +7,6 @@ Baz,2,2.5,false,"wants to be promoted to ""Boss"", and
 get a raise"
 -- data.jtt --
 "Name"	"Age"	"Salary"	"Retiring"	"Notes"
-"string"	"int"	"float"	"bool"	"string?"
 "Foo"	1	2.1	false	""
 "Bar"	4	6.75	true	null
 "Baz"	2	2.5	false	"wants to be promoted to \"Boss\", and\nget a raise"
