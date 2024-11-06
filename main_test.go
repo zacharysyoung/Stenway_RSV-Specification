@@ -22,7 +22,7 @@ func Test_toCSVRecord(t *testing.T) {
 	}
 }
 
-func Test_toJTRow(t *testing.T) {
+func Test_toJTTRow(t *testing.T) {
 	for _, tc := range []struct {
 		rec  record
 		want string
@@ -32,7 +32,7 @@ func Test_toJTRow(t *testing.T) {
 		{rec3, `"Baz"	2	2.5	false	"wants to be promoted to \"Boss\", and\nget a raise"`},
 	} {
 		if got := tc.rec.toJTTRow(); got != tc.want {
-			t.Errorf("toJTRow(%v);\n got: %v\nwant: %v", tc.rec, pretty(got), pretty(tc.want))
+			t.Errorf("toJTTRow(%v);\n got: %v\nwant: %v", tc.rec, pretty(got), pretty(tc.want))
 		}
 	}
 }
