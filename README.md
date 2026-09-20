@@ -36,7 +36,7 @@ The ABNF grammar [^2] appears as follows:
 
 `row = *value EOR`
 
-`value = *( [UTF8DATA] EOV )`
+`value = *[UTF8DATA] EOV`
 
 `EOR = %xFF`
 
@@ -72,7 +72,7 @@ RSV_BYTES = (b""
     + b"\x61\x61\x61" + EOV + EOV + b"\x63\x63\x63" + EOV + EOR
     + EOR
     + b"\x7a\x7a\x7a" + EOV + b"\x79\x79\x79" + EOV + EOR
-)
+)  # fmt: skip
 
 rsv_rows = decode(RSV_BYTES)
 
