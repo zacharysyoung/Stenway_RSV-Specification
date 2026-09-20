@@ -2,16 +2,15 @@
 
 ## Introduction
 
-The RSV format is a simple binary alternative to CSV that eliminates the problem of delimiters appearing as values and thus needing special handling of the value.  The format is binary, and so cannot be handled by applications that are RSV-unaware; it is intended that users rely on RSV-aware applications to create, edit, import, or export an RSV file.
+The RSV format is a simple binary alternative to CSV that eliminates the problem of delimiters appearing as values and thus needing special handling of the value. The format is binary, and so cannot be handled by applications that are RSV-unaware; it is intended that users rely on RSV-aware applications to create, edit, import, or export an RSV file.
 
 This specification differs from [the original](https://github.com/Stenway/RSV-Specification) in that this spec does not define null values.
 
-This specification differs from RFC 4180 [^1] in that it doesn't describe how RSV might be used, e.g. trying to define a header.
-
+This specification differs from RFC 4180 [^1] in that it doesn't describe how RSV might be used, e.g. trying to define a header, or the shape of the data.
 
 ## Definition of the RSV format
 
- 1. A value is zero or more sequences of valid UTF-8 encode bytes, terminated by the end-of-value byte 0xFE (EOV).  For example (spaces included for clarity):
+1.  A value is zero or more sequences of valid UTF-8 encoded bytes, terminated by the end-of-value byte 0xFE (EOV). For example, one field "aaa" (spaces included for clarity):
 
     `aaa EOV`
 
@@ -19,7 +18,7 @@ This specification differs from RFC 4180 [^1] in that it doesn't describe how RS
 
     `EOV`
 
- 2. A row is zero or more values, terminated by the end-of-row byte 0xFF (EOR).  For example:
+2.  A row is zero or more values, terminated by the end-of-row byte 0xFF (EOR). For example, three fields, "aaa", empty, and "ccc":
 
     `aaa EOV EOV ccc EOV EOR`
 
@@ -27,7 +26,7 @@ This specification differs from RFC 4180 [^1] in that it doesn't describe how RS
 
     `EOR`
 
- 3. A file is zero or more rows, allowing for an empty file.  For example, one row of three values, followed by an empty row, followed by a row of two values:
+3.  A file is zero or more rows, allowing for an empty file. For example, one row of three values, followed by an empty row, followed by a row of two values:
 
     `aaa EOV EOV ccc EOV EOR EOR zzz EOV yyy EOV EOR`
 
@@ -113,5 +112,7 @@ assert decode(encode(rsv_rows)) == rsv_rows
 ## Normative references
 
 [^1]: Shafranovich Y., "Common Format and MIME Type for Comma-Separated Values (CSV) Files", RFC 4180, October 2005.
+
 [^2]: Crocker, D. and P. Overell, "Augmented BNF for Syntax Specifications: ABNF", RFC 2234, November 1997.
+
 [^3]: Yergeau, F., "UTF-8, a transformation format of ISO 10646", RFC 3629, November 2003.
